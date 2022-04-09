@@ -10,7 +10,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseUser;
+import com.scube.localnews.NewsApp;
 import com.scube.localnews.R;
 
 public class SplashScreen extends AppCompatActivity {
@@ -18,6 +21,7 @@ public class SplashScreen extends AppCompatActivity {
     ImageView logo;
     TextView appName;
     Animation topAnim,bottomAnim;
+    NewsApp newsApp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,14 +32,22 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     private void navigateToActivity() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent mainActivity=new Intent(SplashScreen.this, LoginActivity.class);
-                startActivity(mainActivity);
-                finish();
-            }
-        },5000);
+        if (newsApp.getmAuth().getCurrentUser() != null) {
+            FirebaseUser currentUser = newsApp.getmAuth().getCurrentUser();
+            Toast.makeText(getApplicationContext(), currentUser.getEmail(), Toast.LENGTH_LONG).show();
+            Intent mainActivity = new Intent(SplashScreen.this, MainActivity.class);
+            startActivity(mainActivity);
+            finish();
+        } else {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent mainActivity = new Intent(SplashScreen.this, LoginActivity.class);
+                    startActivity(mainActivity);
+                    finish();
+                }
+            }, 5000);
+        }
     }
 
     private void initViews() {
@@ -45,5 +57,6 @@ public class SplashScreen extends AppCompatActivity {
         bottomAnim=AnimationUtils.loadAnimation(this,R.anim.bottom_animation);;
         logo.setAnimation(topAnim);
         appName.setAnimation(bottomAnim);
+        newsApp=(NewsApp) getApplication();
     }
 }

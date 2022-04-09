@@ -4,8 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -16,6 +19,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.scube.localnews.IVerticalAdapter;
 import com.scube.localnews.ItemCallback;
+import com.scube.localnews.NewsApp;
 import com.scube.localnews.R;
 import com.scube.localnews.adapter.HorizontalViewPager2Adapter;
 import com.scube.localnews.adapter.VerticalViewPager2Adapter;
@@ -23,8 +27,9 @@ import com.scube.localnews.model.NewsItem;
 import java.util.ArrayList;
 
 public class MainActivity extends FragmentActivity implements ItemCallback, IVerticalAdapter,OnCompleteListener<QuerySnapshot> {
-ViewPager2 viewPager2;
-NewsItem newsItem;
+    NewsApp newsApp;
+    ViewPager2 viewPager2;
+    NewsItem newsItem;
     FirebaseFirestore db;
     private DatabaseReference mDatabase;
     ArrayList<NewsItem> newsItemList =new ArrayList<>();
@@ -34,15 +39,16 @@ NewsItem newsItem;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.horizantal_container);
-        FirebaseApp.initializeApp(getApplicationContext());
-        db = FirebaseFirestore.getInstance();
+        getActionBar().setTitle("LocalNews");
+        newsApp=(NewsApp)getApplication();
+        db = newsApp.getDb();
         db.collection("newsItems")
                 .limit(5)
                 .get()
                 .addOnCompleteListener(MainActivity.this);
 
         initHorizontalViewPager();
-         verticalViewPager2Adapter = new VerticalViewPager2Adapter( getApplicationContext(), newsItemList);
+        verticalViewPager2Adapter = new VerticalViewPager2Adapter( getApplicationContext(), newsItemList);
 
 
     }
@@ -96,6 +102,27 @@ NewsItem newsItem;
             }
         } else {
             Log.w("TAG", "Error getting documents.", task.getException());
+        }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_logout:
+                newsApp.getmAuth().signOut();
+                Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }

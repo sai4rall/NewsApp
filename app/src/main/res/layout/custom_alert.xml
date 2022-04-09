@@ -55,7 +55,7 @@
             android:layout_weight="15"
             android:background="@drawable/button_bg"
             android:text="OK"
-            android:textColor="#ffffff"
+            android:textColor="#FFFFFF"
             android:textStyle="bold" />
     </RelativeLayout>
 

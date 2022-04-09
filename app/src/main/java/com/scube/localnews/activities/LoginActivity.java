@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     ProgressDialog pdialog;
     EditText uidEt,pwdEt;
     TextInputLayout uidtextInputLayout,pwdtextInputLayout2;
-    TextView signup;
+    TextView signup,foregotpwd;
     String  TAG="LoginActivity";
 
     @Override
@@ -55,6 +55,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         login_button.setOnClickListener(this);
         signup=(TextView) findViewById(R.id.signup);
         signup.setOnClickListener(this);
+        foregotpwd=findViewById(R.id.foregotpwd);
+        foregotpwd.setOnClickListener(this);
     }
 
     @Override
@@ -93,6 +95,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(v.getId()==R.id.signup){
             if (Helper.isNetworkAvailable(LoginActivity.this)) {
                 Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(i);
+            }else{
+                Helper.showErrorScreen(LoginActivity.this,"LoginActivity");
+            }
+        }
+        if(v.getId()==R.id.foregotpwd){
+            if (Helper.isNetworkAvailable(LoginActivity.this)) {
+                Intent i = new Intent(LoginActivity.this, ForegotPassword.class);
                 startActivity(i);
             }else{
                 Helper.showErrorScreen(LoginActivity.this,"LoginActivity");
