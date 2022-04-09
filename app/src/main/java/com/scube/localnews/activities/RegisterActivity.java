@@ -73,6 +73,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     pdialog.cancel();
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                    AlertBox.showDismisableAlertDialog(RegisterActivity.this,task.getException().getLocalizedMessage());
                     Toast.makeText(RegisterActivity.this, "Authentication failed.",
                             Toast.LENGTH_SHORT).show();
 
@@ -85,6 +86,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private void updateUI(FirebaseUser user) {
         Intent mainActivity=new Intent(RegisterActivity.this,MainActivity.class);
         startActivity(mainActivity);
+        finish();
     }
 
     private boolean validate() {

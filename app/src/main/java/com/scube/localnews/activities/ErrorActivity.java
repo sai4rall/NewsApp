@@ -22,11 +22,15 @@ public class ErrorActivity extends AppCompatActivity {
         retry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(callback.equalsIgnoreCase("LoginActivity")){
-                    Intent i=new Intent(ErrorActivity.this,LoginActivity.class);
+                try {
+                    Class<?> act = Class.forName("com.scube.localnews.activities."+callback);
+                    Intent i=new Intent(ErrorActivity.this,act);
                     startActivity(i);
                     finish();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
                 }
+
                 //Toast.makeText(ErrorActivity.this,callback,Toast.LENGTH_LONG).show();
             }
         });
