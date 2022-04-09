@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "532601009462",
+    "firebase_url": "https://scubeapp2001-2f11b-default-rtdb.firebaseio.com",
+    "project_id": "scubeapp2001-2f11b",
+    "storage_bucket": "scubeapp2001-2f11b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:532601009462:android:0551b208960a3e55d7ef97",
+        "android_client_info": {
+          "package_name": "com.scube.localnews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "532601009462-uu772hnrep40jed38qgo45ii31cb4act.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1pTjPAdqNebhSatUCTiwjgrKYmmnRst0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "532601009462-uu772hnrep40jed38qgo45ii31cb4act.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
