@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<menu xmlns:android="http://schemas.android.com/apk/res/android">-->
+
+<!--</menu>-->
+<!--    <?xml version="1.0" encoding="utf-8"?>-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+tools:showIn="navigation_view">
+
+<group android:checkableBehavior="single">
+<!--    <item-->
+<!--        android:id="@+id/messages"-->
+<!--        android:icon="@drawable/msglog"-->
+<!--        android:title="Messages" />-->
+<!--    <item-->
+<!--        android:id="@+id/chats"-->
+<!--        android:icon="@drawable/chatgrpsc"-->
+<!--        android:title="Chats/Groups" />-->
+<!--    <item-->
+<!--        android:id="@+id/offers"-->
+<!--        android:icon="@drawable/offers"-->
+<!--        android:title="Offers" />-->
+<!--    <item-->
+<!--        android:id="@+id/aboutus"-->
+<!--        android:icon="@drawable/abtus"-->
+<!--        android:title="About Us" />-->
+
+    <item
+        android:id="@+id/nav_contactus"
+        android:icon="@drawable/ic_menu_manage"
+        android:title="Contact Us" />
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/logout"
+        android:title="Logout" />
+</group>
+
+
+
+</menu>

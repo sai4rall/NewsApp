@@ -45,7 +45,8 @@ public class NewsApp extends Application implements OnCompleteListener<QuerySnap
     public void loadData(Timestamp timestamp,int position) {
 
         db.collection("newsItems")
-                .whereGreaterThan("insertTimestamp",timestamp).orderBy("insertTimestamp", Query.Direction.ASCENDING).limit(position==0?5:(position*2))
+                .whereLessThan("insertTimestamp",timestamp)
+                .orderBy("insertTimestamp", Query.Direction.DESCENDING).limit(position==0?5:(position*2))
                 .get()
                 .addOnCompleteListener(NewsApp.this);
         Toast.makeText(getApplicationContext(),timestamp+" fetching more  ",Toast.LENGTH_LONG).show();

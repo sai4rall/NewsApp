@@ -41,7 +41,7 @@ public class SplashScreen extends AppCompatActivity {
                     if (newsApp.getmAuth().getCurrentUser() != null) {
                         FirebaseUser currentUser = newsApp.getmAuth().getCurrentUser();
                         Toast.makeText(getApplicationContext(), currentUser.getEmail(), Toast.LENGTH_LONG).show();
-                        Intent mainActivity = new Intent(SplashScreen.this, MainActivity.class);
+                        Intent mainActivity = new Intent(SplashScreen.this, HomeActivity.class);
                         startActivity(mainActivity);
                     } else {
                         Intent mainActivity = new Intent(SplashScreen.this, LoginActivity.class);
