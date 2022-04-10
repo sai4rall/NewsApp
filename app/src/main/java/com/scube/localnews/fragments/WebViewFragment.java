@@ -86,8 +86,6 @@ ItemCallback itemCallback;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v= inflater.inflate(R.layout.fragment_web_view, container, false);
-        Toast.makeText(getContext(),"onCreateView",Toast.LENGTH_LONG).show();
-
         return v;
     }
 }

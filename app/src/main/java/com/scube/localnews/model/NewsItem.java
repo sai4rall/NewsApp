@@ -1,23 +1,32 @@
 package com.scube.localnews.model;
 
 
+import com.google.firebase.Timestamp;
+
 public class NewsItem  {
-    @Override
-    public String toString() {
-        return "NewsItem{" +
-                "image='" + image + '\'' +
-                ", header='" + header + '\'' +
-                ", description='" + description + '\'' +
-                ", linkAddress='" + linkAddress + '\'' +
-                '}';
+
+    public NewsItem() {
     }
 
     private String image;
     private String header;
     private String description;
     private String linkAddress;
+    private Timestamp insertTimestamp;
 
-    public NewsItem() {
+    public NewsItem(String image, String header, String description, String linkAddress,Timestamp insertTimestamp) {
+        this.image = image;
+        this.header = header;
+        this.description = description;
+        this.linkAddress = linkAddress;
+        this.insertTimestamp=insertTimestamp;
+    }
+    public Timestamp getInsertTimestam() {
+        return insertTimestamp;
+    }
+
+    public void setInsertTimestam(Timestamp insertTimestamp) {
+        this.insertTimestamp = insertTimestamp;
     }
 
     public String getImage() {
@@ -52,11 +61,15 @@ public class NewsItem  {
         this.linkAddress = linkAddress;
     }
 
-    public NewsItem(String image, String header, String description, String linkAddress) {
-        this.image = image;
-        this.header = header;
-        this.description = description;
-        this.linkAddress = linkAddress;
+    @Override
+    public String toString() {
+        return "NewsItem{" +
+                "image='" + image + '\'' +
+                ", header='" + header + '\'' +
+                ", description='" + description + '\'' +
+                ", linkAddress='" + linkAddress + '\'' +
+                ", insertTimestamp=" + insertTimestamp +
+                '}';
     }
 
 }

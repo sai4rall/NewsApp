@@ -44,7 +44,6 @@ public class SplashScreen extends AppCompatActivity {
                         Intent mainActivity = new Intent(SplashScreen.this, MainActivity.class);
                         startActivity(mainActivity);
                     } else {
-
                         Intent mainActivity = new Intent(SplashScreen.this, LoginActivity.class);
                         startActivity(mainActivity);
                     }
@@ -63,7 +62,6 @@ public class SplashScreen extends AppCompatActivity {
         appName = (TextView) findViewById(R.id.splash_title);
         topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animatotion);
         bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
-        ;
         logo.setAnimation(topAnim);
         appName.setAnimation(bottomAnim);
         newsApp = (NewsApp) getApplication();

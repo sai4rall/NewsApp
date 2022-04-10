@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.scube.localnews.ItemCallback;
 import com.scube.localnews.R;
 import com.scube.localnews.model.NewsItem;
 
@@ -20,18 +19,17 @@ import java.util.List;
 public class VerticalViewPager2Adapter extends RecyclerView.Adapter<VerticalViewPager2Adapter.ViewHolder> {
 
     private Context ctx;
-    List<NewsItem> slideItems;
-    public VerticalViewPager2Adapter(Context ctx, List<NewsItem> slideItems ) {
+    List<NewsItem> newsItems;
+    public VerticalViewPager2Adapter(Context ctx, List<NewsItem> newsItems ) {
         this.ctx = ctx;
-        System.out.println(slideItems);
-        this.slideItems = slideItems;
+        this.newsItems = newsItems;
     }
-    public void setSlideItems(List<NewsItem> slideItems){
-        this.slideItems=slideItems;
+    public void setNewsItems(List<NewsItem> newsItems){
+        this.newsItems = newsItems;
     }
 
-    public List<NewsItem> getSlideItems() {
-       return this.slideItems;
+    public List<NewsItem> getNewsItems() {
+       return this.newsItems;
     }
 
     @NonNull
@@ -45,13 +43,12 @@ public class VerticalViewPager2Adapter extends RecyclerView.Adapter<VerticalView
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 //        this.itemCallback.putItem(slideItems.get(position));
-        NewsItem m=slideItems.get(position);
-        System.out.println("===="+m+"====");
+        NewsItem m= newsItems.get(position);
         Glide.with(ctx)
-                .load(slideItems.get(position).getImage())
+                .load(newsItems.get(position).getImage())
                 .into(holder.image);
-        holder.header.setText(slideItems.get(position).getHeader());
-        holder.desc.setText(slideItems.get(position).getDescription());
+        holder.header.setText(newsItems.get(position).getHeader());
+        holder.desc.setText(newsItems.get(position).getInsertTimestam().toDate()+":::"+newsItems.get(position).getDescription());
 
 
     }
@@ -59,7 +56,7 @@ public class VerticalViewPager2Adapter extends RecyclerView.Adapter<VerticalView
     // This Method returns the size of the Array
     @Override
     public int getItemCount() {
-        return slideItems.size();
+        return newsItems.size();
     }
 
     // The ViewHolder class holds the view

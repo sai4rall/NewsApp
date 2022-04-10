@@ -9,6 +9,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.scube.localnews.IVerticalAdapter;
 import com.scube.localnews.ItemCallback;
+import com.scube.localnews.NewsApp;
 import com.scube.localnews.config.Constants;
 import com.scube.localnews.fragments.DashBoardFragement;
 import com.scube.localnews.fragments.WebViewFragment;
@@ -19,10 +20,15 @@ import java.util.List;
 public class HorizontalViewPager2Adapter  extends FragmentStateAdapter {
     ItemCallback itemCallback;
     IVerticalAdapter iVerticalAdapter;
-    public HorizontalViewPager2Adapter(FragmentActivity activity, ItemCallback itemCallback, IVerticalAdapter iVerticalAdapter) {
+    NewsApp newsApp;
+    public HorizontalViewPager2Adapter(FragmentActivity activity,
+                                       ItemCallback itemCallback,
+                                       IVerticalAdapter iVerticalAdapter,
+                                       NewsApp newsApp) {
         super(activity);
         this.itemCallback=itemCallback;
         this.iVerticalAdapter=iVerticalAdapter;
+        this.newsApp=newsApp;
     }
 
     @NonNull
@@ -30,7 +36,7 @@ public class HorizontalViewPager2Adapter  extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         // Return a NEW fragment instance in createFragment(int)
         if(position==0){
-            return new DashBoardFragement(itemCallback,iVerticalAdapter);
+            return new DashBoardFragement(itemCallback,iVerticalAdapter,newsApp);
         }else{
             Fragment webViewFragment= new WebViewFragment(this.itemCallback);
             Bundle args = new Bundle();
