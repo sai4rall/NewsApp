@@ -8,19 +8,27 @@
         <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/drawable/icon.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/font/bangers.xml" value="0.28020833333333334" />
         <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/layout/activity_error.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/layout/activity_foregot_password.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/layout/activity_home.xml" value="0.2441123188405797" />
         <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/layout/activity_login.xml" value="0.3548698167791707" />
         <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/layout/activity_register.xml" value="0.12552083333333333" />
         <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/layout/activity_splash_screen.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/layout/app_bar_home.xml" value="0.1" />
         <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/layout/content_error.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/layout/content_home.xml" value="0.12708333333333333" />
         <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/layout/custom_alert.xml" value="0.12708333333333333" />
         <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/layout/fragment_dash_board_fragement.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/layout/fragment_dashboard2.xml" value="0.12708333333333333" />
         <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/layout/fragment_web_view.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/layout/fragment_web_view2.xml" value="0.12708333333333333" />
         <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/layout/horizantal_container.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/layout/main_base.xml" value="0.12552083333333333" />
+        <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/layout/nav_header_home.xml" value="0.264" />
         <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/layout/vertical2_layout.xml" value="0.12708333333333333" />
-        <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/layout/vertical_container.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/layout/vertical_container.xml" value="0.1" />
+        <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/menu/activity_home_drawer.xml" value="0.12552083333333333" />
+        <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/menu/main.xml" value="0.25" />
         <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14322916666666666" />
         <entry key="..\:/Users/sai/AndroidStudioProjects/MyApplication5/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.14322916666666666" />
       </map>

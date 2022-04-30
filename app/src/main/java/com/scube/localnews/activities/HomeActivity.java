@@ -12,13 +12,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.Timestamp;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.scube.localnews.IVerticalAdapter;
 import com.scube.localnews.ItemCallback;
 import com.scube.localnews.NewsApp;
@@ -27,7 +23,6 @@ import com.scube.localnews.adapter.HorizontalViewPager2Adapter;
 import com.scube.localnews.adapter.VerticalViewPager2Adapter;
 import com.scube.localnews.model.NewsItem;
 
-import org.w3c.dom.Text;
 
 import java.util.Date;
 
@@ -35,8 +30,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     NewsApp newsApp;
     ViewPager2 viewPager2;
     NewsItem newsItem;
-    FirebaseFirestore db;
-    private DatabaseReference mDatabase;
     HorizontalViewPager2Adapter horizontalViewPager2Adapter;
     VerticalViewPager2Adapter verticalViewPager2Adapter;
 
@@ -45,22 +38,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_base);
         newsApp=(NewsApp)getApplication();
-        FirebaseUser currentUser = newsApp.getmAuth().getCurrentUser();
-        Toast.makeText(getApplicationContext(), currentUser.getDisplayName()+"===222", Toast.LENGTH_LONG).show();
 
         setUpNavigationDrawer();
-        db = newsApp.getDb();
         Date date=new Date();
         date.setDate(date.getDate());
         date.setHours(0);
         date.setMinutes(0);
         date.setSeconds(0);
 
-        Toast.makeText(getApplicationContext(),date+" date value  ",Toast.LENGTH_LONG).show();
         Timestamp MidNight=new Timestamp(date);
-        Toast.makeText(getApplicationContext(),MidNight.toDate()+" newsItems  ",Toast.LENGTH_LONG).show();
         initHorizontalViewPager();
-        newsApp.loadData(MidNight,0);
         verticalViewPager2Adapter = new VerticalViewPager2Adapter( getApplicationContext(), newsApp.getNewsItemList());
         newsApp.setVerticalViewPager2Adapter(verticalViewPager2Adapter);
     }
@@ -102,6 +89,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         TextView emailAddress=(TextView) navigationView.getHeaderView(0).findViewById(R.id.emailAddressMenu);
         emailAddress.setText(newsApp.getmAuth().getCurrentUser().getEmail());
+        TextView nameEv=(TextView) navigationView.getHeaderView(0).findViewById(R.id.nameV);
+        nameEv.setText(newsApp.getmAuth().getCurrentUser().getDisplayName());
     }
 
     @Override

@@ -1,24 +1,17 @@
 package com.scube.localnews.activities;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.Timestamp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
+
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.scube.localnews.IVerticalAdapter;
 import com.scube.localnews.ItemCallback;
 import com.scube.localnews.NewsApp;
@@ -26,11 +19,9 @@ import com.scube.localnews.R;
 import com.scube.localnews.adapter.HorizontalViewPager2Adapter;
 import com.scube.localnews.adapter.VerticalViewPager2Adapter;
 import com.scube.localnews.model.NewsItem;
+import com.scube.localnews.service.FcmReceiverService;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-
+@Deprecated
 public class MainActivity extends FragmentActivity implements ItemCallback, IVerticalAdapter {
     NewsApp newsApp;
     ViewPager2 viewPager2;
@@ -43,20 +34,13 @@ public class MainActivity extends FragmentActivity implements ItemCallback, IVer
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.horizantal_container);
+        FirebaseMessaging.getInstance().subscribeToTopic("local-news");
+
         getActionBar().setTitle("LocalNews");
         newsApp=(NewsApp)getApplication();
         db = newsApp.getDb();
-        Date date=new Date();
-        date.setDate(date.getDate());
-        date.setHours(0);
-        date.setMinutes(0);
-        date.setSeconds(0);
 
-        Toast.makeText(getApplicationContext(),date+" date value  ",Toast.LENGTH_LONG).show();
-        Timestamp MidNight=new Timestamp(date);
-        Toast.makeText(getApplicationContext(),MidNight.toDate()+" newsItems  ",Toast.LENGTH_LONG).show();
         initHorizontalViewPager();
-        newsApp.loadData(MidNight,0);
         verticalViewPager2Adapter = new VerticalViewPager2Adapter( getApplicationContext(), newsApp.getNewsItemList());
         newsApp.setVerticalViewPager2Adapter(verticalViewPager2Adapter);
 
@@ -95,6 +79,8 @@ public class MainActivity extends FragmentActivity implements ItemCallback, IVer
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_logout:
+                FcmReceiverService.unsubscribeTopic(getApplicationContext(),"localNewsApp");
+
                 newsApp.getmAuth().signOut();
                 Intent intent=new Intent(MainActivity.this,LoginActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

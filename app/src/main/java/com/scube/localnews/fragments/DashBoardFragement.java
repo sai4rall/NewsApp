@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.scube.localnews.IDataLoadCallBack;
 import com.scube.localnews.IVerticalAdapter;
 import com.scube.localnews.ItemCallback;
 import com.scube.localnews.NewsApp;
@@ -16,7 +17,7 @@ import com.scube.localnews.R;
 import com.scube.localnews.transformers.ZoomOutPageTransformer;
 
 
-public class DashBoardFragement extends Fragment {
+public class DashBoardFragement extends Fragment implements IDataLoadCallBack{
     IVerticalAdapter iVerticalAdapter;
     ItemCallback itemCallback;
     NewsApp newsApp;
@@ -48,13 +49,19 @@ public class DashBoardFragement extends Fragment {
                 super.onPageScrolled(position, positionOffset, positionOffsetPixels);
                itemCallback.putItem(iVerticalAdapter.getVerticalViewPager2Adapter().getNewsItems().get(position));
                 if(position==  newsApp.getNewsItemList().size()-2){
-                    newsApp.loadData(newsApp.getNewsItemList().get(newsApp.getNewsItemList().size()-1).getInsertTimestam(),position);
+                    newsApp.loadData(newsApp.getNewsItemList().get(newsApp.getNewsItemList().size()-1).getInsertTimestam(),position,null,DashBoardFragement.this);
 
                 }
             }
         });
         return v;
     }
-
-
+    @Override
+    public void OnItemsLoaded(boolean isSuccess){
+        if(isSuccess){
+            newsApp.getVerticalViewPager2Adapter().notifyDataSetChanged();
+        }else{
+            //TODO need to navigate error screen.
+        }
+    }
 }
